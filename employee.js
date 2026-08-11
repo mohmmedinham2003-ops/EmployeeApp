@@ -1,12 +1,12 @@
 function getAllEmployees() {
 
-    fetch("https://api.freeprojectapi.com/api/EmployeeApp/GetEmployees").then(response => response.json).rthen(result => {
+    fetch("https://api.freeprojectapi.com/api/EmployeeApp/GetEmployees").then(response => response.json()).then(result => {
 
         console.log(result);
 
         let employeeDetails = document.getElementById("tblEmployeeDetails");
 
-        result.array.forEach(employee => {
+        result.forEach(employee => {
             employeeDetails.innerHTML += `
             <tr>
                 <td>${employee.employeeId}</td>
@@ -32,4 +32,7 @@ function getAllEmployees() {
         
     });
 
+
 }
+
+    getAllEmployees();  
