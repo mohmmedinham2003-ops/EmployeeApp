@@ -69,6 +69,9 @@ function getDesignation() {
     fetch("https://api.freeprojectapi.com/api/EmployeeApp/GetDesignationsByDeptId").then(response => response.json()).then(result => {
         console.log(result);
 
+        let designationDetails = document.getElementById("drpDesignation");
+
+        result
 
     })
 
