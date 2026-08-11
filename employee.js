@@ -66,14 +66,34 @@ getDepartments();
 
 
 function getDesignation() {
-    fetch("https://api.freeprojectapi.com/api/EmployeeApp/GetDesignationsByDeptId").then(response => response.json()).then(result => {
+
+    let departmentId = document.getElementById("drpDepartment");
+
+    
+    fetch(`https://api.freeprojectapi.com/api/EmployeeApp/GetDesignationsByDeptId?deptId=${departmentId}`).then(response => response.json()).then(result => {
         console.log(result);
 
         let designationDetails = document.getElementById("drpDesignation");
 
-        result
+        result.forEach(designation => {
+            designationDetails.innerHTML += `
+            
+            <option value="${designation.designationId}">
+                ${designation.designationName}
+                </option>
+            
+            `;
+
+        });
 
     })
+    .catch(error=>{
+        console.log(error);
+        
+
+    });
 
 
 }
+
+getDesignation();
