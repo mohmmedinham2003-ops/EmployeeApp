@@ -36,3 +36,30 @@ function getAllEmployees() {
 }
 
     getAllEmployees();  
+
+
+    function getDepartments(){
+
+        fetch("https://api.freeprojectapi.com/api/EmployeeApp/GetDepartments").then(response => response.json()).then(result => {
+
+            console.log(result);
+            let departmentSelect = document.getElementById("drpDepartment");
+
+            result.forEach(department => {
+                departmentSelect.innerHTML += `
+                <option value="${department.departmentId}">
+                ${department.departmentName}
+                </option>
+                
+                `
+
+            });
+            
+        })
+        .catch(error => {
+            console.log(error);
+            
+
+        });
+    }
+    getDepartments();
