@@ -4,6 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <title>Document</title>
 </head>
 
@@ -11,7 +13,7 @@
     <h1>Employee Management</h1>
     <h3>All Employee List</h3>
 
-    <table border="1" id="tblEmployeeDetails">
+    <table class="table table-bordered" border="1" id="tblEmployeeDetails">
         <tr>
             <th>ID</th>
             <th>Name</th>
@@ -29,20 +31,84 @@
 
     <br><br>
 
-    <label>Department: </label>
 
-    <select id="drpDepartment" onchange="getDesignation()">
-        <option value="">Select Department</option>
 
-    </select>
+    <form class="card container mt-5">
 
-    <br><br>
+        <h1 class="text-center">Add Employee</h1>
 
-    <label for="">Designation: </label>
-    <select id="drpDesignation">
-        <option value="">select Designation</option>
-    </select>
+        <div class="mb-3">
+            <label class="form-label">Full Name</label>
+            <input type="text" class="form-control" id="txtEmpFullName">
+        </div>
 
+        <div class="mb-3">
+            <label class="form-label">Email</label>
+            <input type="email" class="form-control" id="txtEmpEmail">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Phone</label>
+            <input type="text" class="form-control" id="txtEmpPhone">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Gender</label>
+            <select class="form-control" id="drpGender">
+                <option value="">Select Gender</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Date of Joining</label>
+            <input type="date" class="form-control" id="txtDateOfJoining">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Department</label>
+
+            <select class="form-control" id="drpDepartment" onchange="getDesignation()">
+                <option value="">Select Department</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Designation</label>
+
+            <select class="form-control" id="drpDesignation">
+                <option value="">Select Designation</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Employee Type</label>
+
+            <select class="form-control" id="drpEmployeeType">
+                <option value="">Select Employee Type</option>
+                <option value="Permanent">Permanent</option>
+                <option value="Contract">Contract</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Salary</label>
+            <input type="number" class="form-control" id="txtSalary">
+        </div>
+
+        <div class="mb-3 text-center">
+            <button type="button" class="btn btn-success" onclick="createEmployee()">
+                Add Employee
+            </button>
+        </div>
+
+    </form>
+   
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
     <script src="/employee.js"></script>
 </body>
 
