@@ -27,39 +27,50 @@ function getAllEmployees() {
         });
 
     })
-    .catch(error => {
-        console.log(error);
-        
-    });
+        .catch(error => {
+            console.log(error);
+
+        });
 
 
 }
 
-    getAllEmployees();  
+getAllEmployees();
 
 
-    function getDepartments(){
+function getDepartments() {
 
-        fetch("https://api.freeprojectapi.com/api/EmployeeApp/GetDepartments").then(response => response.json()).then(result => {
+    fetch("https://api.freeprojectapi.com/api/EmployeeApp/GetDepartments").then(response => response.json()).then(result => {
 
-            console.log(result);
-            let departmentSelect = document.getElementById("drpDepartment");
+        console.log(result);
+        let departmentSelect = document.getElementById("drpDepartment");
 
-            result.forEach(department => {
-                departmentSelect.innerHTML += `
+        result.forEach(department => {
+            departmentSelect.innerHTML += `
                 <option value="${department.departmentId}">
                 ${department.departmentName}
                 </option>
                 
                 `
 
-            });
-            
-        })
+        });
+
+    })
         .catch(error => {
             console.log(error);
-            
+
 
         });
-    }
-    getDepartments();
+}
+getDepartments();
+
+
+function getDesignation() {
+    fetch("https://api.freeprojectapi.com/api/EmployeeApp/GetDesignationsByDeptId").then(response => response.json()).then(result => {
+        console.log(result);
+
+
+    })
+
+
+}
