@@ -194,24 +194,29 @@ function createEmployee() {
 // }
 // updateEmployee();
 
-function deleteEmployee(employeeId){
+function deleteEmployee(employeeId) {
+
     fetch(`https://api.freeprojectapi.com/api/EmployeeApp/DeleteEmployee?id=${employeeId}`, {
-        
-        method:"DELETE"
+        method: "DELETE"
     })
-    .then(response => response.json()).then(result => {
-        console.log(result);
-        
-        alert("Employee Deleted Successfully");
+    .then(response => {
 
+        if (response.ok) {
+
+            alert("Employee Deleted Successfully!");
+
+
+        } else {
+
+            alert("Failed to delete employee");
+
+        }
 
     })
-
-    .catch(error =>{
+    .catch(error => {
 
         console.log(error);
-        
-    })
+        alert("Something went wrong");
 
-
+    });
 }
