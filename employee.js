@@ -21,7 +21,7 @@ function getAllEmployees() {
                 <td>${employee.designationName}</td>
 
               <td>
-                    <div>
+                    <div class="d-inline-flex gap-2">
                         <button class="btn btn-warning"
                             onclick="editEmployee(${employee.employeeId})">
                             Edit
