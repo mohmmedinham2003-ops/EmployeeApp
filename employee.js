@@ -154,42 +154,64 @@ function createEmployee() {
 }
 
 
-function updateEmployee() {
+// function updateEmployee() {
 
-    let employee = {
-        employeeId: 8402,
-        fullName: "Ahmed Updated",
-        email: "ahmed@gmail.com",
-        phone: "0771234567",
-        gender: "Male",
-        dateOfJoining: "2026-08-12T00:00:00",
-        departmentId: 1,
-        designationId: 1,
-        employeeType: "Permanent",
-        salary: 60000
-    };
+//     let employee = {
+//         employeeId: 8402,
+//         fullName: "Ahmed Updated",
+//         email: "ahmed@gmail.com",
+//         phone: "0771234567",
+//         gender: "Male",
+//         dateOfJoining: "2026-08-12T00:00:00",
+//         departmentId: 1,
+//         designationId: 1,
+//         employeeType: "Permanent",
+//         salary: 60000
+//     };
 
-    fetch("https://api.freeprojectapi.com/api/EmployeeApp/UpdateEmployee?id=8402", {
+//     fetch("https://api.freeprojectapi.com/api/EmployeeApp/UpdateEmployee?id=8402", {
 
-        method: "PUT",
+//         method: "PUT",
 
-        headers: {
-            "Content-Type": "application/json"
-        },
+//         headers: {
+//             "Content-Type": "application/json"
+//         },
 
-        body: JSON.stringify(employee)
+//         body: JSON.stringify(employee)
+
+//     })
+//         .then(response => response.json())
+//         .then(result => {
+
+//             console.log(result);
+
+//         })
+//         .catch(error => {
+
+//             console.log(error);
+
+//         });
+// }
+// updateEmployee();
+
+function deleteEmployee(employeeId){
+    fetch(`https://api.freeprojectapi.com/api/EmployeeApp/DeleteEmployee?id=${employeeId}`, {
+        
+        method:"DELETE"
+    })
+    .then(response => response.json()).then(result => {
+        console.log(result);
+        
+        alert("Employee Deleted Successfully");
+
 
     })
-        .then(response => response.json())
-        .then(result => {
 
-            console.log(result);
+    .catch(error =>{
 
-        })
-        .catch(error => {
+        console.log(error);
+        
+    })
 
-            console.log(error);
 
-        });
 }
-updateEmployee();
