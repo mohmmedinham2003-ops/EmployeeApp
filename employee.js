@@ -94,3 +94,33 @@ function getDesignation() {
             console.log(error);
         });
 }
+
+function createEmployee(){
+    let employee = {
+        fullName: document.getElementById("txtEmpFullName").value,
+
+        email: document.getElementById("txtEmpEmail").value,
+
+        phone: document.getElementById("txtEmpPhone").value,
+
+        gender: document.getElementById("drpGender").value,
+
+        dateOfJoining: document.getElementById("txtDateOfJoining").value,
+
+        departmentId: Number(document.getElementById("drpDepartment").value),
+
+        designationId: Number(document.getElementById("drpDesignation").value),
+
+        employeeType: document.getElementById("drpEmployeeType").value,
+
+        salary: Number(document.getElementById("txtSalary").value)
+
+    };
+
+        console.log(employee);
+        
+
+
+
+
+}
