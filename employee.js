@@ -117,8 +117,9 @@ function createEmployee(){
 
     };
 
-        console.log(employee);
-        
+    console.log(employee);
+    
+    fetch("https://api.freeprojectapi.com/api/EmployeeApp/CreateEmployee",)  
 
 
 
