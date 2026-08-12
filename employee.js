@@ -131,8 +131,10 @@ function createEmployee(){
     })
     .then(response => response.json()).then(result => {
         console.log(result);
+
+        alert("Employee Created Successfully!");
         
-    })
+    });
 
 
 
