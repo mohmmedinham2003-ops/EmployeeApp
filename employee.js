@@ -20,12 +20,21 @@ function getAllEmployees() {
                 <td>${employee.departmentName}</td>
                 <td>${employee.designationName}</td>
 
-                <td>
-                    <button class="btn btn-warning"
-                        onclick="editEmployee(${employee.employeeId})">
-                        Edit
-                    </button>
+              <td>
+                    <div>
+                        <button class="btn btn-warning"
+                            onclick="editEmployee(${employee.employeeId})">
+                            Edit
+                        </button>
+                        <button class="btn btn-danger"
+                            onclick="deleteEmployee(${employee.employeeId})">
+                            Delete
+                        </button>
+                    </div>
                 </td>
+
+
+
             </tr>
             
             `
@@ -101,7 +110,7 @@ function getDesignation() {
         });
 }
 
-function createEmployee(){
+function createEmployee() {
     let employee = {
         fullName: document.getElementById("txtEmpFullName").value,
 
@@ -124,25 +133,26 @@ function createEmployee(){
     };
 
     console.log(employee);
-    
-    fetch("https://api.freeprojectapi.com/api/EmployeeApp/CreateEmployee", {
-        method:"POST",
 
-        headers:{
-            "Content-Type":"application/json"
+    fetch("https://api.freeprojectapi.com/api/EmployeeApp/CreateEmployee", {
+        method: "POST",
+
+        headers: {
+            "Content-Type": "application/json"
         },
 
         body: JSON.stringify(employee)
 
     })
-    .then(response => response.json()).then(result => {
-        console.log(result);
+        .then(response => response.json()).then(result => {
+            console.log(result);
 
-        alert("Employee Created Successfully!");
-        
-    });
+            alert("Employee Created Successfully!");
+
+        });
 
 }
+
 
 function updateEmployee() {
 
@@ -170,16 +180,16 @@ function updateEmployee() {
         body: JSON.stringify(employee)
 
     })
-    .then(response => response.json())
-    .then(result => {
+        .then(response => response.json())
+        .then(result => {
 
-        console.log(result);
+            console.log(result);
 
-    })
-    .catch(error => {
+        })
+        .catch(error => {
 
-        console.log(error);
+            console.log(error);
 
-    });
+        });
 }
 updateEmployee();
