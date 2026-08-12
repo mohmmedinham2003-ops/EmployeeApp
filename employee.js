@@ -20,6 +20,12 @@ function getAllEmployees() {
                 <td>${employee.departmentName}</td>
                 <td>${employee.designationName}</td>
 
+                <td>
+                    <button class="btn btn-warning"
+                        onclick="editEmployee(${employee.employeeId})">
+                        Edit
+                    </button>
+                </td>
             </tr>
             
             `
@@ -176,3 +182,4 @@ function updateEmployee() {
 
     });
 }
+updateEmployee();
