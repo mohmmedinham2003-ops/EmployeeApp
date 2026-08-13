@@ -202,8 +202,12 @@ function getEmployeeById(employeeId){
 
             console.log(result);
 
-            docu
+            document.getElementById("txtFullName").value = result.fullName;
+             document.getElementById("txtEmail").value = result.email;
 
+            document.getElementById("txtPhone").value = result.phone;
+
+            document.getElementById("cmbGender").value = result.gender;
         })
         .catch(error => {
             console.log(error);
