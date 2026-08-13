@@ -202,6 +202,7 @@ function updateEmployee() {
 
         if (response.ok) {
             alert("Employee Updated Successfully!!!");
+            location.reload();
         } else {
             alert("Failed to update employee");
         }
