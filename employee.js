@@ -297,7 +297,7 @@ function deleteEmployee(employeeId) {
             if (response.ok) {
 
                 alert("Employee Deleted Successfully!");
-
+                location.reload();
 
             } else {
 
