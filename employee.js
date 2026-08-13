@@ -202,12 +202,12 @@ function getEmployeeById(employeeId) {
 
             console.log(result);
 
-            document.getElementById("txtFullName").value = result.fullName;
-            document.getElementById("txtEmail").value = result.email;
+            document.getElementById("txtEmpFullName").value = result.fullName;
+            document.getElementById("txtEmpEmail").value = result.email;
 
-            document.getElementById("txtPhone").value = result.phone;
+            document.getElementById("txtEmpPhone").value = result.phone;
 
-            document.getElementById("cmbGender").value = result.gender;
+            document.getElementById("drpGender").value = result.gender;
 
             document.getElementById("txtDateOfJoining").value =
                 result.dateOfJoining.split("T")[0];
@@ -218,7 +218,7 @@ function getEmployeeById(employeeId) {
             document.getElementById("drpDesignation").value =
                 result.designationId;
 
-            document.getElementById("cmbEmployeeType").value =
+            document.getElementById("drpEmployeeType").value =
                 result.employeeType;
 
             document.getElementById("txtSalary").value =
@@ -227,7 +227,6 @@ function getEmployeeById(employeeId) {
         .catch(error => {
             console.log(error);
         });
-
 
 }
 
