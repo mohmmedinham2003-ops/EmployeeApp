@@ -253,7 +253,6 @@ function getEmployeeById(employeeId) {
                 result.salary;
 
 
-            // Load designations for this department
             fetch(`https://api.freeprojectapi.com/api/EmployeeApp/GetDesignationsByDeptId?deptId=${result.departmentId}`)
                 .then(response => response.json())
                 .then(designations => {
@@ -274,7 +273,6 @@ function getEmployeeById(employeeId) {
 
                     });
 
-                    // NOW select the employee's designation
                     designationDetails.value =
                         result.designationId;
 
