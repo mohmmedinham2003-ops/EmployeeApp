@@ -195,7 +195,7 @@ function createEmployee() {
 // updateEmployee();
 
 
-function getEmployeeById(employeeId){
+function getEmployeeById(employeeId) {
     fetch(`https://api.freeprojectapi.com/api/EmployeeApp/${employeeId}`)
         .then(response => response.json())
         .then(result => {
@@ -203,11 +203,26 @@ function getEmployeeById(employeeId){
             console.log(result);
 
             document.getElementById("txtFullName").value = result.fullName;
-             document.getElementById("txtEmail").value = result.email;
+            document.getElementById("txtEmail").value = result.email;
 
             document.getElementById("txtPhone").value = result.phone;
 
             document.getElementById("cmbGender").value = result.gender;
+
+            document.getElementById("txtDateOfJoining").value =
+                result.dateOfJoining.split("T")[0];
+
+            document.getElementById("drpDepartment").value =
+                result.departmentId;
+
+            document.getElementById("drpDesignation").value =
+                result.designationId;
+
+            document.getElementById("cmbEmployeeType").value =
+                result.employeeType;
+
+            document.getElementById("txtSalary").value =
+                result.salary;
         })
         .catch(error => {
             console.log(error);
@@ -223,24 +238,24 @@ function deleteEmployee(employeeId) {
     fetch(`https://api.freeprojectapi.com/api/EmployeeApp/DeleteEmployee?id=${employeeId}`, {
         method: "DELETE"
     })
-    .then(response => {
+        .then(response => {
 
-        if (response.ok) {
+            if (response.ok) {
 
-            alert("Employee Deleted Successfully!");
+                alert("Employee Deleted Successfully!");
 
 
-        } else {
+            } else {
 
-            alert("Failed to delete employee");
+                alert("Failed to delete employee");
 
-        }
+            }
 
-    })
-    .catch(error => {
+        })
+        .catch(error => {
 
-        console.log(error);
-        alert("Something went wrong");
+            console.log(error);
+            alert("Something went wrong");
 
-    });
+        });
 }
