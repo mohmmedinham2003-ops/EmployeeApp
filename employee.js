@@ -25,7 +25,7 @@ function getAllEmployees() {
               <td>
                     <div class="d-inline-flex gap-2">
                         <button class="btn btn-warning"
-                            onclick="editEmployee(${employee.employeeId})">
+                            onclick="getEmployeeById(${employee.employeeId})">
                             Edit
                         </button>
                         <button class="btn btn-danger"
@@ -159,19 +159,33 @@ function createEmployee() {
 function updateEmployee() {
 
     let employee = {
-        employeeId: 8402,
-        fullName: "Ahmed Updated",
-        email: "ahmed@gmail.com",
-        phone: "0771234567",
-        gender: "Male",
-        dateOfJoining: "2026-08-12T00:00:00",
-        departmentId: 1,
-        designationId: 1,
-        employeeType: "Permanent",
-        salary: 60000
+        employeeId: selectedEmployeeId,
+
+        fullName: document.getElementById("txtEmpFullName").value,
+        email: document.getElementById("txtEmpEmail").value,
+        phone: document.getElementById("txtEmpPhone").value,
+        gender: document.getElementById("drpGender").value,
+        dateOfJoining: document.getElementById("txtDateOfJoining").value,
+
+        departmentId: Number(
+            document.getElementById("drpDepartment").value
+        ),
+
+        designationId: Number(
+            document.getElementById("drpDesignation").value
+        ),
+
+        employeeType: document.getElementById("drpEmployeeType").value,
+
+        salary: Number(
+            document.getElementById("txtSalary").value
+        )
     };
 
-    fetch("https://api.freeprojectapi.com/api/EmployeeApp/UpdateEmployee?id=8402", {
+    console.log("Updating Employee ID:", selectedEmployeeId);
+    console.log("Employee Data:", employee);
+
+    fetch(`https://api.freeprojectapi.com/api/EmployeeApp/UpdateEmployee?id=${selectedEmployeeId}`, {
 
         method: "PUT",
 
@@ -182,24 +196,30 @@ function updateEmployee() {
         body: JSON.stringify(employee)
 
     })
-        .then(response => response.json())
-        .then(result => {
+    .then(response => {
 
-            console.log(result);
+        console.log("Status:", response.status);
 
-        })
-        .catch(error => {
+        if (response.ok) {
+            alert("Employee Updated Successfully!!!");
+        } else {
+            alert("Failed to update employee");
+        }
 
-            console.log(error);
+    })
+    .catch(error => {
 
-        });
+        console.log(error);
+        alert("Something went wrong");
+
+    });
 }
-updateEmployee();
-
 
 function getEmployeeById(employeeId) {
 
     selectedEmployeeId = employeeId;
+
+    console.log("Selected Employee ID:", selectedEmployeeId);
 
     fetch(`https://api.freeprojectapi.com/api/EmployeeApp/${employeeId}`)
         .then(response => response.json())
@@ -207,12 +227,17 @@ function getEmployeeById(employeeId) {
 
             console.log(result);
 
-            document.getElementById("txtEmpFullName").value = result.fullName;
-            document.getElementById("txtEmpEmail").value = result.email;
+            document.getElementById("txtEmpFullName").value =
+                result.fullName;
 
-            document.getElementById("txtEmpPhone").value = result.phone;
+            document.getElementById("txtEmpEmail").value =
+                result.email;
 
-            document.getElementById("drpGender").value = result.gender;
+            document.getElementById("txtEmpPhone").value =
+                result.phone;
+
+            document.getElementById("drpGender").value =
+                result.gender;
 
             document.getElementById("txtDateOfJoining").value =
                 result.dateOfJoining.split("T")[0];
@@ -220,19 +245,44 @@ function getEmployeeById(employeeId) {
             document.getElementById("drpDepartment").value =
                 result.departmentId;
 
-            document.getElementById("drpDesignation").value =
-                result.designationId;
-
             document.getElementById("drpEmployeeType").value =
                 result.employeeType;
 
             document.getElementById("txtSalary").value =
                 result.salary;
+
+
+            // Load designations for this department
+            fetch(`https://api.freeprojectapi.com/api/EmployeeApp/GetDesignationsByDeptId?deptId=${result.departmentId}`)
+                .then(response => response.json())
+                .then(designations => {
+
+                    let designationDetails =
+                        document.getElementById("drpDesignation");
+
+                    designationDetails.innerHTML =
+                        `<option value="">Select Designation</option>`;
+
+                    designations.forEach(designation => {
+
+                        designationDetails.innerHTML += `
+                            <option value="${designation.designationId}">
+                                ${designation.designationName}
+                            </option>
+                        `;
+
+                    });
+
+                    // NOW select the employee's designation
+                    designationDetails.value =
+                        result.designationId;
+
+                });
+
         })
         .catch(error => {
             console.log(error);
         });
-
 }
 
 
